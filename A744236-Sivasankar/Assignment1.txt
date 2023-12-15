@@ -1,0 +1,31 @@
+#Import necessary libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+#%matplotlib inline
+#Loading the dataset
+df = pd.read_csv("C:\\Users\\A744236\\program\\business.csv")
+#print full data set
+print(df)
+print(df.head())
+print(df.describe())
+
+
+
+#  Check the distribution after removing outliers using histogram
+fig, axs = plt.subplots(2,2, figsize=(15, 10))
+sns.histplot(data=df, x="Period", kde=True, color="red", ax=axs[0,0])
+sns.histplot(data=df, x="Data_value", kde=True, color="skyblue", ax=axs[0,1])
+sns.histplot(data=df, x="Magnitude", kde=True, color="olive", ax=axs[1,0])
+sns.histplot(data=df, x="Series_title_5", kde=True, color="gold", ax=axs[1,1])
+# Check distribution using boxplot after removing outliers
+
+fig, axs = plt.subplots(1,3, figsize=(17, 4))
+
+sns.boxplot(df['Period'], ax = axs[0])
+sns.boxplot(df['Data_value'], ax = axs[1])
+sns.boxplot(df['Magnitude'], ax = axs[2])
+
+plt.show()
+
